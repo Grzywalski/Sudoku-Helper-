@@ -1,0 +1,52 @@
+# Konfiguracja połączenia z AI (format: klucz=wartość, linie z # są ignorowane)
+#
+# provider:
+#   ollama     natywne API Ollamy (/api/chat)
+#   openai     KAŻDY serwer zgodny z API OpenAI (/v1/chat/completions): OpenAI, OpenRouter, Groq, Together,
+#              Mistral, DeepSeek, LM Studio, vLLM, llama.cpp, Ollama (/v1) i wiele innych
+#   anthropic  Claude (Anthropic API)
+#   gemini     Google Gemini
+#
+# Klucze opcjonalne:
+#   api_key=...            klucz API (alternatywa: zmienna środowiskowa LLM_API_KEY)
+#   max_tokens=3000        limit długości odpowiedzi
+#   max_tokens_param=...   tylko openai: nazwa pola limitu, domyślnie max_tokens
+#                          (modele rozumujące OpenAI wymagają: max_completion_tokens)
+#   thinking_level=low     tylko gemini: ogranicza "myślenie" modelu
+#   header=Nazwa: wartość  dodatkowy nagłówek HTTP (można powtarzać w wielu liniach)
+
+provider=ollama
+url=http://localhost:11434/api/chat
+model=qwen3.5
+
+# ---------- Przykłady: odkomentuj JEDEN zestaw, a trzy powyższe linie zakomentuj ----------
+
+# LM Studio / vLLM / llama.cpp / Ollama przez /v1 (lokalnie, bez klucza):
+# provider=openai
+# url=http://localhost:1234/v1
+# model=nazwa-modelu
+
+# OpenAI:
+# provider=openai
+# url=https://api.openai.com/v1
+# model=nazwa-modelu
+# api_key=sk-...
+
+# OpenRouter (dowolny model, np. model=anthropic/claude-sonnet-4.5):
+# provider=openai
+# url=https://openrouter.ai/api/v1
+# model=nazwa-modelu
+# api_key=sk-or-...
+
+# Claude (Anthropic):
+# provider=anthropic
+# url=https://api.anthropic.com
+# model=nazwa-modelu
+# api_key=sk-ant-...
+
+# Gemini:
+# provider=gemini
+# url=https://generativelanguage.googleapis.com/v1beta
+# model=gemini-3.5-flash
+# api_key=TWOJ_KLUCZ_Z_GOOGLE_AI_STUDIO
+# thinking_level=low
