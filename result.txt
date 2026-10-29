@@ -1,0 +1,108 @@
+WYNIKI TESTÓW LLM  (2026-10-28 20:21:49)
+prób na test: 100 (z myśleniem: 40) | testy: cell, random_cell, random_digit | konfiguracji: 6 | zapytań łącznie: ok. 1266
+temperatury: 0.95, 0.7, 0.4 | myślenie: OFF, ON (limit myślenia 1200 tok., limit odpowiedzi 300 tok., timeout 70s / z myśleniem 240s, równoległych zapytań 1)
+model: lokalny model - qwen3.5 -> provider=ollama, model=qwen3.5
+Legenda: cell = cyfra w podanej kolumnie i wierszu (nowa plansza w każdej próbie); random_cell = losowe pole ze stałej planszy (poprawność + różnorodność); random_digit = losowa cyfra 1-9 (zakres + rozkład).
+
+=== [1/6] model=lokalny model - qwen3.5 | temperatura=0.95 | myślenie=OFF ===
+  [cell] poprawna cyfra: 82/100 (82.0%, 95% CI 73.3-88.3%) | wśród udzielonych odpowiedzi: 82/100 (82.0%)
+      błędne: 17 | zły format: 1 | puste (limit tokenów): 0 | timeout: 0 | błąd API: 0 | śr. czas: 3.12s
+      rozkład podanych cyfr:  1:10  2:13  3:7  4:8  5:12  6:13  7:17  8:10  9:9
+      rozkład oczekiwanych:   1:9  2:13  3:7  4:9  5:9  6:14  7:16  8:13  9:10
+      najczęstsze pomyłki (oczekiwano→podano): 9→6 x2, 4→5 x1, 6→1 x1, 4→7 x1, 6→5 x1
+  [random_cell] poprawne pole+cyfra: 33/100 (33.0%, 95% CI 24.6-42.7%) | wśród udzielonych odpowiedzi: 33/100 (33.0%)
+      błędne: 67 | zły format: 0 | puste (limit tokenów): 0 | timeout: 0 | błąd API: 0 | śr. czas: 2.81s
+      różnych wybranych pól: 33 z 100 odpowiedzi → zróżnicowane
+      najczęściej wybierane (kolumna,wiersz): (4,2) x20 (20%), (8,2) x11 (11%), (5,2) x9 (9%)
+      entropia wyboru pola: 4.34 bit (max 5.00 dla 32 pól z cyfrą)
+      rozkład podanych cyfr: 1:15  2:5  3:5  4:0  5:1  6:36  7:19  8:8  9:11
+      błędy: wskazane pole puste=36, zła cyfra w polu=31
+  [random_digit] poprawna cyfra 1-9: 100/100 (100.0%, 95% CI 96.3-100.0%) | wśród udzielonych odpowiedzi: 100/100 (100.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 0 | timeout: 0 | błąd API: 0 | śr. czas: 2.59s
+      rozkład podanych cyfr: 1:0  2:0  3:0  4:4  5:55  6:0  7:41  8:0  9:0
+      różnorodność: głównie te same; rozkład NIERÓWNOMIERNY (chi²=325.0 > 15.507)
+
+=== [2/6] model=lokalny model - qwen3.5 | temperatura=0.7 | myślenie=OFF ===
+  [cell] poprawna cyfra: 85/100 (85.0%, 95% CI 76.7-90.7%) | wśród udzielonych odpowiedzi: 85/100 (85.0%)
+      błędne: 15 | zły format: 0 | puste (limit tokenów): 0 | timeout: 0 | błąd API: 0 | śr. czas: 2.88s
+      rozkład podanych cyfr:  1:9  2:14  3:8  4:10  5:11  6:14  7:15  8:10  9:9
+      rozkład oczekiwanych:   1:9  2:13  3:7  4:9  5:9  6:14  7:16  8:13  9:10
+      najczęstsze pomyłki (oczekiwano→podano): 9→6 x2, 1→4 x1, 6→1 x1, 4→7 x1, 7→5 x1
+  [random_cell] poprawne pole+cyfra: 38/100 (38.0%, 95% CI 29.1-47.8%) | wśród udzielonych odpowiedzi: 38/100 (38.0%)
+      błędne: 62 | zły format: 0 | puste (limit tokenów): 0 | timeout: 0 | błąd API: 0 | śr. czas: 2.65s
+      różnych wybranych pól: 24 z 100 odpowiedzi → zróżnicowane
+      najczęściej wybierane (kolumna,wiersz): (4,2) x22 (22%), (8,2) x14 (14%), (5,2) x12 (12%)
+      entropia wyboru pola: 3.77 bit (max 5.00 dla 32 pól z cyfrą)
+      rozkład podanych cyfr: 1:13  2:1  3:2  4:0  5:1  6:38  7:25  8:8  9:12
+      błędy: wskazane pole puste=27, zła cyfra w polu=35
+  [random_digit] poprawna cyfra 1-9: 100/100 (100.0%, 95% CI 96.3-100.0%) | wśród udzielonych odpowiedzi: 100/100 (100.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 0 | timeout: 0 | błąd API: 0 | śr. czas: 2.58s
+      rozkład podanych cyfr: 1:0  2:0  3:0  4:4  5:50  6:0  7:46  8:0  9:0
+      różnorodność: zróżnicowane; rozkład NIERÓWNOMIERNY (chi²=316.9 > 15.507)
+
+=== [3/6] model=lokalny model - qwen3.5 | temperatura=0.4 | myślenie=OFF ===
+  [cell] poprawna cyfra: 85/100 (85.0%, 95% CI 76.7-90.7%) | wśród udzielonych odpowiedzi: 85/100 (85.0%)
+      błędne: 15 | zły format: 0 | puste (limit tokenów): 0 | timeout: 0 | błąd API: 0 | śr. czas: 2.91s
+      rozkład podanych cyfr:  1:11  2:13  3:7  4:9  5:11  6:15  7:16  8:9  9:9
+      rozkład oczekiwanych:   1:9  2:13  3:7  4:9  5:9  6:14  7:16  8:13  9:10
+      najczęstsze pomyłki (oczekiwano→podano): 9→6 x2, 6→1 x1, 7→1 x1, 4→7 x1, 7→5 x1
+  [random_cell] poprawne pole+cyfra: 33/100 (33.0%, 95% CI 24.6-42.7%) | wśród udzielonych odpowiedzi: 33/100 (33.0%)
+      błędne: 67 | zły format: 0 | puste (limit tokenów): 0 | timeout: 0 | błąd API: 0 | śr. czas: 2.76s
+      różnych wybranych pól: 15 z 100 odpowiedzi → zróżnicowane
+      najczęściej wybierane (kolumna,wiersz): (4,2) x37 (37%), (8,2) x19 (19%), (3,2) x13 (13%)
+      entropia wyboru pola: 2.86 bit (max 5.00 dla 32 pól z cyfrą)
+      rozkład podanych cyfr: 1:8  2:1  3:4  4:0  5:0  6:46  7:22  8:6  9:13
+      błędy: wskazane pole puste=21, zła cyfra w polu=46
+  [random_digit] poprawna cyfra 1-9: 100/100 (100.0%, 95% CI 96.3-100.0%) | wśród udzielonych odpowiedzi: 100/100 (100.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 0 | timeout: 0 | błąd API: 0 | śr. czas: 2.58s
+      rozkład podanych cyfr: 1:0  2:0  3:0  4:0  5:43  6:0  7:57  8:0  9:0
+      różnorodność: głównie te same; rozkład NIERÓWNOMIERNY (chi²=358.8 > 15.507)
+
+
+=== [4/6] model=lokalny model - qwen3.5 | temperatura=0.95 | myślenie=ON (limit 1200 tok.) ===
+  [cell] poprawna cyfra: 80/100 (80.0%, 95% CI 71.1-86.7%) | wśród udzielonych odpowiedzi: 80/80 (100.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 20 | timeout: 0 | błąd API: 0 | śr. czas: 28.53s
+      rozkład podanych cyfr:  1:6  2:11  3:7  4:7  5:8  6:10  7:12  8:11  9:8
+      rozkład oczekiwanych:   1:9  2:13  3:7  4:9  5:9  6:14  7:16  8:13  9:10
+  [random_cell] poprawne pole+cyfra: 2/100 (2.0%, 95% CI 0.6-7.0%) | wśród udzielonych odpowiedzi: 2/3 (66.7%)
+      błędne: 1 | zły format: 0 | puste (limit tokenów): 97 | timeout: 0 | błąd API: 0 | śr. czas: 33.07s
+      różnych wybranych pól: 3 z 3 odpowiedzi → zróżnicowane
+      najczęściej wybierane (kolumna,wiersz): (4,1) x1 (33%), (2,1) x1 (33%), (6,2) x1 (33%)
+      entropia wyboru pola: 1.58 bit (max 5.00 dla 32 pól z cyfrą)
+      rozkład podanych cyfr: 1:2  2:0  3:0  4:0  5:0  6:0  7:0  8:0  9:1
+      błędy: wskazane pole puste=1, zła cyfra w polu=0
+  [random_digit] poprawna cyfra 1-9: 91/100 (91.0%, 95% CI 83.8-95.2%) | wśród udzielonych odpowiedzi: 91/91 (100.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 9 | timeout: 0 | błąd API: 0 | śr. czas: 17.05s
+      rozkład podanych cyfr: 1:0  2:1  3:9  4:15  5:31  6:10  7:23  8:2  9:0
+      różnorodność: zróżnicowane; rozkład NIERÓWNOMIERNY (chi²=97.0 > 15.507)
+
+=== [5/6] model=lokalny model - qwen3.5 | temperatura=0.7 | myślenie=ON (limit 1200 tok.) ===
+  [cell] poprawna cyfra: 89/100 (89.0%, 95% CI 81.4-93.7%) | wśród udzielonych odpowiedzi: 89/89 (100.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 11 | timeout: 0 | błąd API: 0 | śr. czas: 20.52s
+      rozkład podanych cyfr:  1:8  2:12  3:7  4:9  5:7  6:12  7:14  8:12  9:8
+      rozkład oczekiwanych:   1:9  2:13  3:7  4:9  5:9  6:14  7:16  8:13  9:10
+  [random_cell] poprawne pole+cyfra: 5/100 (5.0%, 95% CI 2.2-11.2%) | wśród udzielonych odpowiedzi: 5/6 (83.3%)
+      błędne: 1 | zły format: 0 | puste (limit tokenów): 94 | timeout: 0 | błąd API: 0 | śr. czas: 31.98s
+      różnych wybranych pól: 5 z 6 odpowiedzi → zróżnicowane
+      najczęściej wybierane (kolumna,wiersz): (7,8) x2 (33%), (6,4) x1 (17%), (7,5) x1 (17%)
+      entropia wyboru pola: 2.25 bit (max 5.00 dla 32 pól z cyfrą)
+      rozkład podanych cyfr: 1:1  2:1  3:0  4:0  5:0  6:0  7:1  8:3  9:0
+      błędy: wskazane pole puste=1, zła cyfra w polu=0
+  [random_digit] poprawna cyfra 1-9: 97/100 (97.0%, 95% CI 91.5-99.0%) | wśród udzielonych odpowiedzi: 97/97 (100.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 3 | timeout: 0 | błąd API: 0 | śr. czas: 15.28s
+      rozkład podanych cyfr: 1:0  2:0  3:14  4:17  5:28  6:8  7:23  8:7  9:0
+      różnorodność: zróżnicowane; rozkład NIERÓWNOMIERNY (chi²=80.3 > 15.507)
+
+=== [6/6] model=lokalny model - qwen3.5 | temperatura=0.4 | myślenie=ON (limit 1200 tok.) ===
+  [cell] poprawna cyfra: 95/100 (95.0%, 95% CI 88.8-97.8%) | wśród udzielonych odpowiedzi: 95/95 (100.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 5 | timeout: 0 | błąd API: 0 | śr. czas: 19.46s
+      rozkład podanych cyfr:  1:9  2:13  3:7  4:8  5:9  6:12  7:15  8:12  9:10
+      rozkład oczekiwanych:   1:9  2:13  3:7  4:9  5:9  6:14  7:16  8:13  9:10
+  [random_cell] poprawne pole+cyfra: 0/100 (0.0%, 95% CI 0.0-3.7%) | wśród udzielonych odpowiedzi: 0/0 (0.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 100 | timeout: 0 | błąd API: 0 | śr. czas: 32.06s
+      różnych wybranych pól: 0 z 0 odpowiedzi → brak danych
+      rozkład podanych cyfr: 1:0  2:0  3:0  4:0  5:0  6:0  7:0  8:0  9:0
+  [random_digit] poprawna cyfra 1-9: 95/100 (95.0%, 95% CI 88.8-97.8%) | wśród udzielonych odpowiedzi: 95/95 (100.0%)
+      błędne: 0 | zły format: 0 | puste (limit tokenów): 5 | timeout: 0 | błąd API: 0 | śr. czas: 13.80s
+      rozkład podanych cyfr: 1:0  2:1  3:2  4:14  5:38  6:5  7:34  8:1  9:0
+      różnorodność: zróżnicowane; rozkład NIERÓWNOMIERNY (chi²=172.8 > 15.507)
